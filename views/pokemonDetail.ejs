@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Details</title>
+    <link rel="stylesheet" href="/styles2.css">
+</head>
+<body>
+    <h1>Pokémon Details</h1>
+    <div class="pokemon-detail">
+        <h2><%= pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1) %></h2>
+        <p><strong>Height:</strong> <%= (pokemon.height * 0.1).toFixed(1) %> meters</p>
+        <p><strong>Weight:</strong> <%= (pokemon.weight * 0.1).toFixed(1) %> kg</p>
+        
+        <h3>Abilities:</h3>
+        <ul>
+            <% pokemon.abilities.forEach(ability => { %>
+                <li><%= ability.ability.name %></li>
+            <% }) %>
+        </ul>
+        
+        <h3>Type(s):</h3>
+        <ul>
+            <% pokemon.types.forEach(type => { %>
+                <li><%= type.type.name %></li>
+            <% }) %>
+        </ul>
+        
+        <h3>Next Evolutions:</h3>
+        <ul>
+            <% pokemon.evolutions.forEach(evolution => { %>
+                <% if (evolution !== pokemon.name) { %> 
+                    <li><%= evolution.charAt(0).toUpperCase() + evolution.slice(1) %></li>
+                <% } %>
+            <% }) %>
+        </ul>
+        
+
+        <a href="/">Voltar</a>
+    </div>
+</body>
+</html>
